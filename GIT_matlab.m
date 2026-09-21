@@ -108,16 +108,16 @@ xlabel("Time",'fontsize' , 12) ,  ylabel ("Power", 'fontsize',12)
 legend({'Measured  Apparant power'})
 title(' Apparant Power against time')
 
-E_bulb_kWh   = cumtrapz(time,P_bulb_measured)   / 3600 / 1000;
-E_fan_kWh    = cumtrapz(time,P_fan_measured)    / 3600 / 1000;
-E_heater_kWh = cumtrapz(time,  P_heater_measured) / 3600 / 1000;
-E_total_kWh  = cumtrapz(time, P_total)  / 3600 / 1000;
+E_bulb_kWh   = cumtrapz(time,P_bulb_measured')   / 3600 / 1000;
+E_fan_kWh    = cumtrapz(time,P_fan_measured')    / 3600 / 1000;
+E_heater_kWh = cumtrapz(time,  P_heater_measured') / 3600 / 1000;
+E_total_kWh  = cumtrapz(time, P_total')  / 3600 / 1000;
 
 figure(5);
-plot(t_sec, E_bulb_kWh, 'r-o', 'LineWidth', 1.2); hold on;
-plot(t_sec, E_fan_kWh, 'g-o', 'LineWidth', 1.2);
-plot(t_sec, E_heater_kWh, 'm-o', 'LineWidth', 1.2);
-plot(t_sec, E_total_kWh, 'k-o', 'LineWidth', 1.6);
+plot(time, E_bulb_kWh, 'r-o', 'LineWidth', 1.2); hold on;
+plot(time, E_fan_kWh, 'g-o', 'LineWidth', 1.2);
+plot(time, E_heater_kWh, 'm-o', 'LineWidth', 1.2);
+plot(time, E_total_kWh, 'k-o', 'LineWidth', 1.6);
 grid on; xlabel('Time (s)'); ylabel('Energy (kWh)');
 legend('Bulb','Fan','Heater','Total','Location','best');
 title('Cumulative energy per load (\int P \, dt)');
@@ -178,7 +178,7 @@ title('Case Scenario: Fan Switches OFF at t = 4s')
 
 figure(7),hold on
 plot(time_case, E_total_case, '-o', 'Color', [0.00 0.45 0.74], 'LineWidth', 2)
-plot(t_sec, E_total_kWh, 'k-o', 'LineWidth', 1.6);
+plot(time, E_total_kWh, 'k-o', 'LineWidth', 1.6);
 
 grid on
 xlabel('Time (s)'), ylabel('Cumulative Energy (kWh)')
